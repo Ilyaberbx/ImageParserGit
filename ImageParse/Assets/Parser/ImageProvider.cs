@@ -4,12 +4,12 @@ using HtmlAgilityPack;
 
 namespace Parser
 {
-    public class ImageRequester 
+    public class ImageProvider 
     {
         private readonly Dictionary<string, List<string>> _cachedImages = new();
         private readonly IParser<List<string>> _parser;
 
-        public ImageRequester(IParser<List<string>> parser) 
+        public ImageProvider(IParser<List<string>> parser) 
             => _parser = parser;
 
         public List<string> GetAllImagesPath(string url)

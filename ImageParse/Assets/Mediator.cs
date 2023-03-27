@@ -12,14 +12,14 @@ public class Mediator : MonoBehaviour
     
     private IParser<List<string>> _parser;
     private ImageLoadByUrl _imageLoader;
-    private ImageRequester _requester;
+    private ImageProvider _provider;
 
     private void Awake()
     {
         _searchButton.OnSearched += Search;
         _imageLoader = new ImageLoadByUrl();
         _parser = new ImageParser();
-        _requester = new ImageRequester(_parser);
+        _provider = new ImageProvider(_parser);
     }
 
     private void OnDestroy()
@@ -29,7 +29,7 @@ public class Mediator : MonoBehaviour
     {
         _creator.Clear();
         
-        List<string> imagesPath = _requester.GetAllImagesPath(url);
+        List<string> imagesPath = _provider.GetAllImagesPath(url);
 
         foreach (var path in imagesPath)
         {
